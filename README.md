@@ -1,5 +1,5 @@
 # logica-rh
-###Departments end points
+### Departments end points
     ####get mothod for getting all departments --- > http://localhost:8889/departments
     ####post mothod for creating a department --- > http://localhost:8889/departments
         #####{
