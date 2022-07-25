@@ -4,13 +4,9 @@ import com.logica.rh.domain.Department;
 import com.logica.rh.exception.EntityNotFoundException;
 import com.logica.rh.exception.RequestException;
 import com.logica.rh.mapping.DepartmentMapper;
-import com.logica.rh.repository.DepatementRepository;
+import com.logica.rh.repository.DepartmentRepository;
 import com.logica.rh.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -24,21 +20,21 @@ import java.util.stream.StreamSupport;
 @AllArgsConstructor
 public class DepartmentService {
 
-    DepatementRepository depatementRepository;
+    DepartmentRepository departmentRepository;
     EmployeeRepository employeeRepository;
     DepartmentMapper departmentMapper;
     MessageSource messageSource;
 
     @Transactional(readOnly = true)
     public List<Department> getDepartments() {
-        return StreamSupport.stream(depatementRepository.findAll().spliterator(), false)
+        return StreamSupport.stream(departmentRepository.findAll().spliterator(), false)
                 .map(departmentMapper::toDepartment)
                 .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
     public Department getDepartment(String name) {
-        return departmentMapper.toDepartment(depatementRepository.findByNameIgnoreCase(name).orElseThrow(() ->
+        return departmentMapper.toDepartment(departmentRepository.findByNameIgnoreCase(name).orElseThrow(() ->
                 new EntityNotFoundException(messageSource.getMessage("department.notfound", new Object[]{name},
                         Locale.getDefault()))));
     }
@@ -50,24 +46,24 @@ public class DepartmentService {
                         new Object[]{department.getResponsable().getId()},
                         Locale.getDefault())));
 
-        depatementRepository.findByNameIgnoreCase(department.getName())
+        departmentRepository.findByNameIgnoreCase(department.getName())
                 .ifPresent(entity -> {
                     throw new RequestException(messageSource.getMessage("department.exists", new Object[]{department.getName()},
                             Locale.getDefault()), HttpStatus.CONFLICT);
                 });
-        return departmentMapper.toDepartment(depatementRepository.save(departmentMapper.fromDepartment(department)));
+        return departmentMapper.toDepartment(departmentRepository.save(departmentMapper.fromDepartment(department)));
     }
 
     @Transactional
     public Department updateDepartment(String name, Department department) {
-        return depatementRepository.findByNameIgnoreCase(name)
+        return departmentRepository.findByNameIgnoreCase(name)
                 .map(entity -> {
                     employeeRepository.findById(department.getResponsable().getId()).orElseThrow(() ->
                             new EntityNotFoundException(messageSource.getMessage("employee.notfound",
                                     new Object[]{department.getResponsable().getId()},
                                     Locale.getDefault())));
                     department.setName(name);
-                    return departmentMapper.toDepartment(depatementRepository.save(departmentMapper.fromDepartment(department)));
+                    return departmentMapper.toDepartment(departmentRepository.save(departmentMapper.fromDepartment(department)));
                 }).orElseThrow(() -> new EntityNotFoundException(messageSource.getMessage("department.notfound",
                         new Object[]{name},
                         Locale.getDefault())));
@@ -76,7 +72,7 @@ public class DepartmentService {
     @Transactional
     public void deleteDepartment(String name) {
         try {
-            depatementRepository.deleteById(name);
+            departmentRepository.deleteById(name);
         } catch (Exception e) {
             throw new RequestException(messageSource.getMessage("department.errordeletion", new Object[]{name},
                     Locale.getDefault()),

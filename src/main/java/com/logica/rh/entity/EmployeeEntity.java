@@ -1,12 +1,11 @@
 package com.logica.rh.entity;
 
-import com.logica.rh.domain.Enumeration;
+import com.logica.rh.domain.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -21,7 +20,7 @@ public class EmployeeEntity implements Serializable {
     private Long id;
     private String firstName;
     private String lastName;
-    private Enumeration gender;
+    private Gender gender;
     private String country;
     private String city;
     private String adress;

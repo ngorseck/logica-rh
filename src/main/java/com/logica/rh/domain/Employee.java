@@ -16,7 +16,7 @@ public class Employee implements Serializable {
     @NotNull
     private String lastName;
     @NotNull
-    private Enumeration gender;
+    private Gender gender;
     @NotNull
     private String country;
     @NotNull

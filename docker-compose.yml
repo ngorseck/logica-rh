@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  logica-rh-Mysql:
+    image: mysql:5.6
+    container_name: container_logica-rh-Mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=logica-rh-db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+    ports:
+      - 3306:3306
+
+  logica-rh:
+    image: logica-rh:latest
+    container_name: container_logica-rh
+    ports:
+      - 8087:8080
+    restart: unless-stopped
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://logica-rh-Mysql:3306/logica-rh-db?autoReconnect=true&useSSL=false
+    depends_on:
+      - logica-rh-Mysql

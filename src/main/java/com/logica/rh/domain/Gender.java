@@ -1,5 +1,5 @@
 package com.logica.rh.domain;
 
-public enum Enumeration {
+public enum Gender {
     M, F
 }

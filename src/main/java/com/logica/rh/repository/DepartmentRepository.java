@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface DepatementRepository extends CrudRepository<DepartmentEntity, String> {
+public interface DepartmentRepository extends CrudRepository<DepartmentEntity, String> {
 
     Optional<DepartmentEntity> findByNameIgnoreCase(String name);
 
