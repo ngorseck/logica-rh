@@ -1,27 +1,27 @@
 version: '3'
 
 services:
-  logica-rh-Mysql:
-    image: mysql:5.6
+  mysql:
+    image: mysql:8.0
     container_name: container_logica-rh-Mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=logica-rh-db
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=user
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: logica-rh-db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
     ports:
-      - 3306:3306
+      - 3307:3306
 
   logica-rh:
-    image: logica-rh:latest
+    image: ngorseck/logica-rh:0.0.1-SNAPSHOT
     container_name: container_logica-rh
     ports:
-      - 8087:8080
+      - 8889:8889
     restart: unless-stopped
-    build:
-      context: ./
-      dockerfile: Dockerfile
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://logica-rh-Mysql:3306/logica-rh-db?autoReconnect=true&useSSL=false
-    depends_on:
-      - logica-rh-Mysql
+      spring.datasource.url: jdbc:mysql://mysql:3306/logica-rh-db?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false
+      spring.datasource.username: user
+      spring.datasource.password: user
+      JAVA_TOOL_OPTIONS: -Xss256K -XX:ReservedCodeCacheSize=64M -XX:MaxMetaspaceSize=128M -Xmx64M
+    links:
+      - mysql
