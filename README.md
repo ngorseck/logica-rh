@@ -1,7 +1,9 @@
 # logica-rh
-###Departments end points
-    ####get method for getting all departments --- > http://localhost:8889/departments
-    ####post method for creating a department --- > http://localhost:8889/departments
+
+### Departments end points
+    ####get mothod for getting all departments --- > http://localhost:8889/departments
+    ####post mothod for creating a department --- > http://localhost:8889/departments
+
         #####{
                 "name": "Communication",
                 "responsable": {

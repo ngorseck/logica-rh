@@ -1,27 +1,76 @@
-version: '3'
+version: '3.9'
 
 services:
-  logica-rh-Mysql:
-    image: mysql:5.6
-    container_name: container_logica-rh-Mysql
+  mysql:
+    image: mysql:8.0
+    container_name: logica-rh-mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=logica-rh-db
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=user
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: logica-rh-db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
     ports:
-      - 3306:3306
+      - 3307:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+    profiles:
+      - all
 
-  logica-rh:
-    image: logica-rh:latest
-    container_name: container_logica-rh
+  back-end:
+    image: ngorseck/logica-rh:0.0.1-SNAPSHOT
+    container_name: logica-rh-backend
     ports:
-      - 8087:8080
+      - 8889:8889
     restart: unless-stopped
-    build:
-      context: ./
-      dockerfile: Dockerfile
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://logica-rh-Mysql:3306/logica-rh-db?autoReconnect=true&useSSL=false
+      spring.datasource.url: jdbc:mysql://mysql:3306/logica-rh-db?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false
+      spring.datasource.username: user
+      spring.datasource.password: user
+      JAVA_TOOL_OPTIONS: -Xss256K -XX:ReservedCodeCacheSize=64M -XX:MaxMetaspaceSize=128M -Xmx64M
     depends_on:
-      - logica-rh-Mysql
+      - mysql
+    links:
+      - mysql
+    profiles:
+      - all
+
+  postgres:
+    image: postgres:9.6
+    container_name: logica-rh-postgres
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  keycloak:
+    image: bitnami/keycloak:18.0.0-debian-11-r0
+    container_name: logica-rh-keycloak
+    environment:
+      KEYCLOAK_DATABASE_HOST: postgres
+      KEYCLOAK_DATABASE_NAME: keycloak
+      KEYCLOAK_DATABASE_USER: keycloak
+      KEYCLOAK_DATABASE_SCHEMA: public
+      KEYCLOAK_DATABASE_PASSWORD: password
+      KEYCLOAK_ADMIN_USER: admin
+      KEYCLOAK_ADMIN_PASSWORD: password
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+
+  maildev:
+    container_name: logica-rh-maildev
+    image: djfarrelly/maildev:1.0.0-rc2
+    ports:
+      - 9999:80
+      - 25
+
+volumes:
+  postgres_data:
+    driver: local
+  mysql_data:
+    driver: local
