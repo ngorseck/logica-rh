@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--changeSet author="ngor seck" id="initial-data-countries">
+        <insert tableName="departments">
+            <column name="name" value="Sales"></column>
+            <column name="responsable_id" value="1"></column>
+        </insert>
+        <insert tableName="departments">
+            <column name="name" value="HR"></column>
+            <column name="responsable_id" value="1"></column>
+        </insert>
+        <insert tableName="departments">
+            <column name="name" value="Information technology"></column>
+            <column name="responsable_id" value="1"></column>
+        </insert>
+        <insert tableName="departments">
+            <column name="name" value="Accounting"></column>
+            <column name="responsable_id" value="1"></column>
+        </insert>
+        <insert tableName="departments">
+            <column name="name" value="Support"></column>
+            <column name="responsable_id" value="1"></column>
+        </insert>
+
+    </changeSet-->
+
+    <!--changeSet author="ngor seck" id="initial-data-persons">
+        <insert tableName="employees">
+            <column name="id" value="3"></column>
+            <column name="first_name" value="Mareme"></column>
+            <column name="last_name" value="Seck"></column>
+            <column name="adress" value="Quebec"></column>
+            <column name="city" value="Quebec"></column>
+            <column name="country" value="Montreal"></column>
+            <column name="gender" value="F"></column>
+        </insert>
+    </changeSet-->
+</databaseChangeLog>

@@ -20,6 +20,7 @@ public class EmployeeEntity implements Serializable {
     private Long id;
     private String firstName;
     private String lastName;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     private String country;
     private String city;

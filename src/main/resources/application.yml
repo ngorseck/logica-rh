@@ -1,0 +1,44 @@
+server:
+    port: 9090
+
+spring:
+    datasource:
+        password:
+        url: jdbc:mysql://localhost:3306/logica-rh?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: root
+    application:
+        name: spring-logica-rh
+    liquibase:
+        change-log: classpath:/db/changelog/changelog-master.xml
+
+springdoc:
+    api-docs:
+        path: /api-docs
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,info,metrics,wavefront
+    info:
+        env:
+            enabled: true
+
+    endpoint:
+      health:
+        show-details: ALWAYS
+
+    health:
+        redis:
+          enabled: false
+        probes:
+            enabled: true
+
+info:
+    application:
+        name: spring-logica-rh
+        version: '@project.version@'
+
+wavefront:
+    application:
+        name: spring-logica-rh

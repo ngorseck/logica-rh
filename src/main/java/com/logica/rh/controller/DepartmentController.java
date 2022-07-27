@@ -32,12 +32,12 @@ public class DepartmentController {
     }
 
     @PutMapping("{name}")
-    public Department updateCountry(@PathVariable("name") String name, @Valid @RequestBody Department department) {
+    public Department updateDepartment(@PathVariable("name") String name, @Valid @RequestBody Department department) {
         return departmentService.updateDepartment(name, department);
     }
 
     @DeleteMapping("{name}")
-    public void deleteCountry(@PathVariable("name") String name) {
+    public void deleteDepartment(@PathVariable("name") String name) {
         departmentService.deleteDepartment(name);
     }
 

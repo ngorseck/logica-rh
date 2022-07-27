@@ -1,7 +1,7 @@
 # logica-rh
 ###Departments end points
-    ####get mothod for getting all departments --- > http://localhost:8889/departments
-    ####post mothod for creating a department --- > http://localhost:8889/departments
+    ####get method for getting all departments --- > http://localhost:8889/departments
+    ####post method for creating a department --- > http://localhost:8889/departments
         #####{
                 "name": "Communication",
                 "responsable": {
@@ -14,7 +14,7 @@
                         "adress": "Wakhade Bargny - Dakar"
                     }
             }
-    ####put mothod for updating a department --- > http://localhost:8889/departments/name
+    ####put method for updating a department --- > http://localhost:8889/departments/name
     #########{
                 "name": "Communication",
                 "responsable": {
@@ -27,7 +27,7 @@
                         "adress": "Wakhade Bargny - Dakar"
                     }
             }
-    ####delete mothod for deleting a department --- > http://localhost:8889/departments/name
+    ####delete method for deleting a department --- > http://localhost:8889/departments/name
 
 
 

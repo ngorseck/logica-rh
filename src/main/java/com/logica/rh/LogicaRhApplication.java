@@ -9,5 +9,6 @@ public class LogicaRhApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LogicaRhApplication.class, args);
 	}
+	//http://localhost:8889/swagger-ui/index.html
 
 }

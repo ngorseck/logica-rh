@@ -1,0 +1,19 @@
+spring:
+    datasource:
+        password:
+        url: jdbc:mysql://localhost:3306/logica-rh-dev?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: root
+    jpa:
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      open-in-view: false
+      hibernate:
+        use-new-id-generator-mappings: false
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    jwk-set-uri: http://localhost:9092/auth/realms/training/protocol/openid-connect/certs
+
+
+logging:
+    config: classpath:log4j2-dev.xml
