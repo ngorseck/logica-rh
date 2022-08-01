@@ -17,7 +17,7 @@ public abstract class BaseTestClass {
     }
 
     protected Department getDepartment() {
-        return new Department("IT", getEmployee());
+        return new Department("HR", getEmployee());
     }
 
     protected MessageSource getMessageSource() {
