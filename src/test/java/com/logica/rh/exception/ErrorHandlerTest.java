@@ -16,6 +16,7 @@ class ErrorHandlerTest {
     @Test
     void testHandleError() throws Exception {
         mockMvc.perform(get("/error"))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isUnauthorized());
+                //.andExpect(status().isNotFound());
     }
 }
