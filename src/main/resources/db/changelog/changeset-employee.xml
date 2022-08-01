@@ -7,11 +7,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <changeSet author="mamadou lamine ba" id="create-table-persons">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="employees"/>
-            </not>
-        </preConditions>
+
         <createTable tableName="employees">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -22,7 +18,7 @@
             <column name="last_name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="adess" type="VARCHAR(255)">
+            <column name="adress" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="city" type="VARCHAR(255)">

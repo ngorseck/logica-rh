@@ -1,5 +1,5 @@
 server:
-    port: 9090
+    port: 8889
 
 spring:
     datasource:
@@ -10,7 +10,21 @@ spring:
         name: spring-logica-rh
     liquibase:
         change-log: classpath:/db/changelog/changelog-master.xml
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    jwk-set-uri: http://localhost:8080/realms/logica-rh/protocol/openid-connect/certs
 
+    #modification pour le caching
+    redis:
+        host: localhost
+        port: 6379
+        cache:
+            redis:
+                cache-null-values: false
+                time-to-live: 40000
+            type: redis
 springdoc:
     api-docs:
         path: /api-docs
@@ -30,7 +44,7 @@ management:
 
     health:
         redis:
-          enabled: false
+          enabled: true #modification pour redis == false a true
         probes:
             enabled: true
 
@@ -42,3 +56,9 @@ info:
 wavefront:
     application:
         name: spring-logica-rh
+
+logging:
+    level:
+        org:
+            springframework:
+                web: DEBUG

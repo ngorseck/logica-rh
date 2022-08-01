@@ -6,7 +6,19 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <!--changeSet author="ngor seck" id="initial-data-countries">
+    <changeSet author="ngor seck" id="initial-data-persons">
+        <insert tableName="employees">
+            <column name="id" value="1"></column>
+            <column name="first_name" value="Mareme"></column>
+            <column name="last_name" value="Seck"></column>
+            <column name="adress" value="Quebec"></column>
+            <column name="city" value="Quebec"></column>
+            <column name="country" value="Montreal"></column>
+            <column name="gender" value="F"></column>
+        </insert>
+    </changeSet>
+
+    <changeSet author="ngor seck" id="initial-data-countries">
         <insert tableName="departments">
             <column name="name" value="Sales"></column>
             <column name="responsable_id" value="1"></column>
@@ -28,17 +40,7 @@
             <column name="responsable_id" value="1"></column>
         </insert>
 
-    </changeSet-->
+    </changeSet>
 
-    <!--changeSet author="ngor seck" id="initial-data-persons">
-        <insert tableName="employees">
-            <column name="id" value="3"></column>
-            <column name="first_name" value="Mareme"></column>
-            <column name="last_name" value="Seck"></column>
-            <column name="adress" value="Quebec"></column>
-            <column name="city" value="Quebec"></column>
-            <column name="country" value="Montreal"></column>
-            <column name="gender" value="F"></column>
-        </insert>
-    </changeSet-->
+
 </databaseChangeLog>

@@ -15,21 +15,7 @@ import java.util.Arrays;
 @Slf4j
 public class LoggingAspect {
 
-    @Around("execution(* com.logica.rh.controller.DepartmentController.*(..))")
-    public Object logAroundAllMethods(ProceedingJoinPoint joinPoint) throws Throwable {
-        // https://howtodoinjava.com/spring-aop/aspectj-around-annotation-example/
-        log.debug("Enter: {}.{}() with argument[s] = {} "+
-                joinPoint.getSignature().getDeclaringTypeName()+
-                joinPoint.getSignature().getName()+
-                Arrays.toString(joinPoint.getArgs()));
 
-            Object result = joinPoint.proceed();
-
-        log.debug("Exit: {}.{}() with result = {}" +
-                joinPoint.getSignature().getDeclaringTypeName() +
-                joinPoint.getSignature().getName() + result);
-        return result;
-    }
     /**
      * Pointcut that matches Web REST endpoints.
      */

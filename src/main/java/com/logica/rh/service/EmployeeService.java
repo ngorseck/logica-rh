@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Locale;
 
 @Service
+@CacheConfig(cacheNames = "employees")
 @AllArgsConstructor
 public class EmployeeService {
 
@@ -31,6 +32,7 @@ public class EmployeeService {
         return employeeRepository.findAll(pageable).map(employeeMapper::toEmployee);
     }
 
+    @Cacheable(key = "#id")
     @Transactional(readOnly = true)
     public Employee getEmployee(Long id) {
         return employeeMapper.toEmployee(employeeRepository.findById(id).orElseThrow(() ->
@@ -48,6 +50,7 @@ public class EmployeeService {
         return employeeMapper.toEmployee(employeeRepository.save(employeeMapper.fromEmployee(employee)));
     }
 
+    @CachePut(key = "#id")
     @Transactional
     public Employee updateEmployee(Long id, Employee employee) {
         return employeeRepository.findById(id)
@@ -59,6 +62,7 @@ public class EmployeeService {
                         Locale.getDefault())));
     }
 
+    @CacheEvict(key = "#id")
     @Transactional
     public void deleteEmployee(Long id) {
         try {

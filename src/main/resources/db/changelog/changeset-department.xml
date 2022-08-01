@@ -7,11 +7,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <changeSet author="ngor seck" id="create-table-departments">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="departments"/>
-            </not>
-        </preConditions>
+
         <createTable tableName="departments">
             <column name="name" type="VARCHAR(255)">
                 <constraints primaryKey="true"/>

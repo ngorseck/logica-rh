@@ -7,6 +7,10 @@ import com.logica.rh.mapping.DepartmentMapper;
 import com.logica.rh.repository.DepartmentRepository;
 import com.logica.rh.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,6 +21,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
+@CacheConfig(cacheNames = "departments")
 @AllArgsConstructor
 public class DepartmentService {
 
@@ -32,6 +37,7 @@ public class DepartmentService {
                 .collect(Collectors.toList());
     }
 
+    @Cacheable(key = "#name")
     @Transactional(readOnly = true)
     public Department getDepartment(String name) {
         return departmentMapper.toDepartment(departmentRepository.findByNameIgnoreCase(name).orElseThrow(() ->
@@ -54,6 +60,7 @@ public class DepartmentService {
         return departmentMapper.toDepartment(departmentRepository.save(departmentMapper.fromDepartment(department)));
     }
 
+    @Cacheable(key = "#name")
     @Transactional
     public Department updateDepartment(String name, Department department) {
         return departmentRepository.findByNameIgnoreCase(name)
@@ -69,6 +76,7 @@ public class DepartmentService {
                         Locale.getDefault())));
     }
 
+    @CacheEvict(key = "#name")
     @Transactional
     public void deleteDepartment(String name) {
         try {
