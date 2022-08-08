@@ -17,6 +17,8 @@ class ErrorHandlerTest {
     void testHandleError() throws Exception {
         mockMvc.perform(get("/error"))
                 .andExpect(status().isUnauthorized());
+        //une modification que je fais pour gerer les authorisation
+        // suite a la mise en place de la securite avec keycloak
                 //.andExpect(status().isNotFound());
     }
 }

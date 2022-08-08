@@ -60,7 +60,7 @@ public class DepartmentService {
         return departmentMapper.toDepartment(departmentRepository.save(departmentMapper.fromDepartment(department)));
     }
 
-    @Cacheable(key = "#name")
+    @CachePut(key = "#name")
     @Transactional
     public Department updateDepartment(String name, Department department) {
         return departmentRepository.findByNameIgnoreCase(name)

@@ -24,7 +24,7 @@ public class SecurityConfig  {
         http.authorizeRequests(authentication -> authentication
                 .antMatchers("/error").permitAll()//error
                 .antMatchers("/actuator/**").permitAll()//endpoint de mamgement
-                .antMatchers("/**").authenticated())
+                .antMatchers("/**").authenticated())//si la personne s'est authentifiee oubien .hasRole() s'il s'est authentifie et a ce role aussi
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt().jwtAuthenticationConverter(new JwtConverter()))
                 .cors().and().csrf().disable().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
@@ -55,21 +56,11 @@ public class LoggingAspect {
     @Around("applicationPackagePointcut() && springBeanPointcut()")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
         log.debug("Enter: {}.{}() with argument[s] = {} and user = {}", joinPoint.getSignature().getDeclaringTypeName(),
-                joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()));//,
-                //SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+                joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()),
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         Object result = joinPoint.proceed();
         log.debug("Exit: {}.{}() with result = {}", joinPoint.getSignature().getDeclaringTypeName(),
                 joinPoint.getSignature().getName(), result);
-
-        /*System.out.println("Enter: {}.{}() with argument[s] = {} and user = {}"+
-                joinPoint.getSignature().getDeclaringTypeName()+
-        joinPoint.getSignature().getName()+ Arrays.toString(joinPoint.getArgs()));//,
-        //SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-            result = joinPoint.proceed();
-            System.out.println("Exit: {}.{}() with result = {}"+
-        joinPoint.getSignature().getDeclaringTypeName()+
-        joinPoint.getSignature().getName()+
-        result);*/
 
         return result;
     }
