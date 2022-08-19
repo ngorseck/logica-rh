@@ -1,0 +1,87 @@
+= Service Documentation
+Ngor Seck <https://github.com/ngorseck[@ngorseck]>
+:revnumber: {project-version}
+:example-caption!:
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../../main/java]
+ifndef::snippets[:snippets: ../../../target/snippets]
+:description: This developer guide describes the design and implementation of a SpringBoot REST service.
+:keywords: Java, Spring, reference, learn, how to
+:doctype: book
+:page-layout!:
+:toc: left
+:nofooter:
+:sectanchors:
+:sectlinks:
+:sectnums:
+:icons: font
+:source-highlighter: highlightjs
+:highlightjs-languages: groovy
+:source-language: asciidoc
+:docinfo: shared-head
+
+
+== Architecture
+
+[plantuml, Package-diagram, png]
+----
+
+package com.logica.rh.domain {
+    class Department
+    class Employee
+}
+
+package com.logica.rh.entity {
+    class DepartmentEntity
+    class EmployeeEntity
+}
+
+package com.logica.rh.mapping {
+    class DepartmentMapper
+    class EmployeeMapper
+}
+
+package com.logica.rh.repository {
+    interface DepartmentRepository
+    interface EmployeeRepository
+}
+
+package com.logica.rh.exception {
+    class APIException
+    class EntityNotFoundException
+    class RequestException
+    class APIExceptionHandler
+}
+
+package com.logica.rh.service {
+    class DepartmentService
+    class EmployeeService
+}
+
+package com.logica.rh.controller {
+    class DepartmentController
+    class EmployeeController
+}
+
+package com.logica.rh.config {
+    class ApplicationConfig
+    class JwtConverter
+    class RedisConfig
+    class SecurityConfig
+}
+
+
+package com.logica.rh.annotation {
+    interface IsAdmin
+}
+
+com.logica.rh.mapping ..> com.logica.rh.domain
+com.logica.rh.mapping ..> com.logica.rh.entity
+com.logica.rh.repository ..> com.logica.rh.entity
+com.logica.rh.service ..> com.logica.rh.repository
+com.logica.rh.service ..> com.logica.rh.exception
+com.logica.rh.service ..> com.logica.rh.mapping
+com.logica.rh.controller ..> com.logica.rh.service
+com.logica.rh.controller ..> com.logica.rh.annotation
+
+----

@@ -62,3 +62,6 @@ logging:
         org:
             springframework:
                 web: DEBUG
+    file:
+        #name: logs/mylog.log
+        name: /Users/macbookair/Documents/IJProjects/2022/Spring/2022/Canada/coach-mamadou-lamine/logica-rh/logs/mylog.log

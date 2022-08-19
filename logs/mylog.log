@@ -1,0 +1,77 @@
+2022-08-11 21:08:26.759  INFO 6421 --- [restartedMain] com.logica.rh.LogicaRhApplication        : Starting LogicaRhApplication using Java 11.0.9.1 on MacBook-Air-de-MacBook.local with PID 6421 (/Users/macbookair/Documents/IJProjects/2022/Spring/2022/Canada/coach-mamadou-lamine/logica-rh/target/classes started by macbookair in /Users/macbookair/Documents/IJProjects/2022/Spring/2022/Canada/coach-mamadou-lamine/logica-rh)
+2022-08-11 21:08:26.793  INFO 6421 --- [restartedMain] com.logica.rh.LogicaRhApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-08-11 21:08:26.976  INFO 6421 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-11 21:08:26.977  INFO 6421 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-11 21:08:29.435  INFO 6421 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2022-08-11 21:08:29.441  INFO 6421 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-08-11 21:08:30.039  INFO 6421 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 576 ms. Found 2 JPA repository interfaces.
+2022-08-11 21:08:30.084  INFO 6421 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2022-08-11 21:08:30.088  INFO 6421 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-08-11 21:08:30.130  INFO 6421 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.logica.rh.repository.DepartmentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2022-08-11 21:08:30.132  INFO 6421 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.logica.rh.repository.EmployeeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2022-08-11 21:08:30.132  INFO 6421 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
+2022-08-11 21:08:32.415  INFO 6421 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
+2022-08-11 21:08:32.442  INFO 6421 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-11 21:08:32.443  INFO 6421 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-11 21:08:32.624  INFO 6421 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-11 21:08:32.624  INFO 6421 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5644 ms
+2022-08-11 21:08:32.709  INFO 6421 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-08-11 21:08:33.188  INFO 6421 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-08-11 21:08:33.209  INFO 6421 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/logica-rh?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC'
+2022-08-11 21:08:33.433 DEBUG 6421 --- [restartedMain] o.springframework.web.filter.CorsFilter  : Filter 'corsFilter' configured for use
+2022-08-11 21:08:35.637  INFO 6421 --- [restartedMain] liquibase.lockservice                    : Successfully acquired change log lock
+2022-08-11 21:08:36.624  INFO 6421 --- [restartedMain] liquibase.changelog                      : Reading from `logica-rh`.DATABASECHANGELOG
+2022-08-11 21:08:36.786  INFO 6421 --- [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2022-08-11 21:08:37.025  INFO 6421 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-11 21:08:37.178  INFO 6421 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-08-11 21:08:37.691  INFO 6421 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-11 21:08:38.068  INFO 6421 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2022-08-11 21:08:39.575  INFO 6421 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-11 21:08:39.596  INFO 6421 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-08-11 21:08:41.313  INFO 6421 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@73a55283, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@580fcbf2, org.springframework.security.web.context.SecurityContextPersistenceFilter@4dbc286b, org.springframework.security.web.header.HeaderWriterFilter@74f3ec97, org.springframework.web.filter.CorsFilter@4ebce728, org.springframework.security.web.authentication.logout.LogoutFilter@2326e9a1, org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationFilter@3750e93, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31124312, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2f6f674d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@26cea116, org.springframework.security.web.session.SessionManagementFilter@1a23154f, org.springframework.security.web.access.ExceptionTranslationFilter@15a25a52, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@73f7bda4]
+2022-08-11 21:08:41.659  WARN 6421 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-08-11 21:08:42.072 DEBUG 6421 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-08-11 21:08:42.393 DEBUG 6421 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 14 mappings in 'requestMappingHandlerMapping'
+2022-08-11 21:08:43.707 DEBUG 6421 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/**] in 'resourceHandlerMapping'
+2022-08-11 21:08:43.741 DEBUG 6421 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-08-11 21:08:44.559  INFO 6421 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-11 21:08:44.672  INFO 6421 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path ''
+2022-08-11 21:08:44.696  INFO 6421 --- [restartedMain] com.logica.rh.LogicaRhApplication        : Started LogicaRhApplication in 24.631 seconds (JVM running for 27.197)
+2022-08-11 21:10:29.755  INFO 6421 --- [http-nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-11 21:10:29.760  INFO 6421 --- [http-nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-11 21:10:29.761 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-08-11 21:10:29.762 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-08-11 21:10:29.762 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-08-11 21:10:29.780 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@272c7d5f
+2022-08-11 21:10:29.782 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@3658cc77
+2022-08-11 21:10:29.783 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-08-11 21:10:29.783  INFO 6421 --- [http-nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
+2022-08-11 21:10:30.197 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8080/realms/logica-rh/protocol/openid-connect/certs
+2022-08-11 21:10:30.218 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.client.RestTemplate              : Accept=[text/plain, application/json, application/*+json, */*]
+2022-08-11 21:10:30.794 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.client.RestTemplate              : Response 200 OK
+2022-08-11 21:10:30.798 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.client.RestTemplate              : Reading to [java.lang.String] as "application/json"
+2022-08-11 21:10:30.973 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/departments", parameters={}
+2022-08-11 21:10:31.000 DEBUG 6421 --- [http-nio-8889-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.logica.rh.controller.DepartmentController#getDepartments()
+2022-08-11 21:10:32.226 DEBUG 6421 --- [http-nio-8889-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2022-08-11 21:10:32.231 DEBUG 6421 --- [http-nio-8889-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Department(name=Accounting, responsable=Employee(id=1, firstName=Mareme, lastName=Seck, gender=F, c (truncated)...]
+2022-08-11 21:10:32.561 DEBUG 6421 --- [http-nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-08-11 21:16:46.112 DEBUG 6421 --- [http-nio-8889-exec-5] o.s.web.client.RestTemplate              : HTTP GET http://localhost:8080/realms/logica-rh/protocol/openid-connect/certs
+2022-08-11 21:16:46.125 DEBUG 6421 --- [http-nio-8889-exec-5] o.s.web.client.RestTemplate              : Accept=[text/plain, application/json, application/*+json, */*]
+2022-08-11 21:16:46.205 DEBUG 6421 --- [http-nio-8889-exec-5] o.s.web.client.RestTemplate              : Response 200 OK
+2022-08-11 21:16:46.206 DEBUG 6421 --- [http-nio-8889-exec-5] o.s.web.client.RestTemplate              : Reading to [java.lang.String] as "application/json"
+2022-08-11 21:16:46.250 DEBUG 6421 --- [http-nio-8889-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/departments/Communication", parameters={}
+2022-08-11 21:16:46.264 DEBUG 6421 --- [http-nio-8889-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.logica.rh.controller.DepartmentController#getDepartment(String)
+2022-08-11 21:16:47.907 DEBUG 6421 --- [http-nio-8889-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2022-08-11 21:16:47.908 DEBUG 6421 --- [http-nio-8889-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Writing [Department(name=Communication, responsable=Employee(id=1, firstName=Mareme, lastName=Seck, gender=F, (truncated)...]
+2022-08-11 21:16:47.913 DEBUG 6421 --- [http-nio-8889-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-08-11 21:16:53.337 DEBUG 6421 --- [http-nio-8889-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/departments/Communicationddd", parameters={}
+2022-08-11 21:16:53.339 DEBUG 6421 --- [http-nio-8889-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.logica.rh.controller.DepartmentController#getDepartment(String)
+2022-08-11 21:16:53.694 ERROR 6421 --- [http-nio-8889-exec-6] com.logica.rh.config.LoggingAspect       : Exception in com.logica.rh.controller.DepartmentController.getDepartment() with message = department not found with id = Communicationddd
+2022-08-11 21:16:53.698 DEBUG 6421 --- [http-nio-8889-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.logica.rh.exception.APIExceptionHandler#handleEntityNotFoundException(EntityNotFoundException)
+2022-08-11 21:16:53.718 DEBUG 6421 --- [http-nio-8889-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2022-08-11 21:16:53.721 DEBUG 6421 --- [http-nio-8889-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [APIException(message=department not found with id = Communicationddd, status=404 NOT_FOUND, timestam (truncated)...]
+2022-08-11 21:16:53.726  WARN 6421 --- [http-nio-8889-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [EntityNotFoundException(message=department not found with id = Communicationddd)]
+2022-08-11 21:16:53.727 DEBUG 6421 --- [http-nio-8889-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2022-08-11 21:21:58.565  INFO 6421 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-08-11 21:21:58.779  INFO 6421 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-08-11 21:21:58.909  INFO 6421 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

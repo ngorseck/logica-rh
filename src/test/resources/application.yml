@@ -1,0 +1,23 @@
+spring:
+    #datasource:
+      #url: jdbc:h2:mem:testdb
+      #driverClassName: org.h2.Driver
+      #username: sa
+      #password: password
+    jpa:
+      #database-platform: org.hibernate.dialect.H2Dialect
+      database-platform: org.hibernate.dialect.MySQL8Dialect
+      show-sql: true
+      open-in-view: false
+      hibernate:
+        use-new-id-generator-mappings: false
+    liquibase:
+      change-log: classpath:/db/changelog/changelog-master.xml
+    security:
+      oauth2:
+        resourceserver:
+          jwt:
+            public-key-location: classpath:idp-key.pub
+
+
+

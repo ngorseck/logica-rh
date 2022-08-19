@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(EmployeeController.class)
-@AutoConfigureRestDocs(outputDir = "target/snippets/employees", uriPort = 9090)
+@AutoConfigureRestDocs(outputDir = "target/snippets/employees", uriPort = 9090)//pour generer la doc des test
 class EmployeeControllerTest extends BaseTestClass {
 
     @Autowired
@@ -40,13 +40,15 @@ class EmployeeControllerTest extends BaseTestClass {
 
     @Test
     public void testGetEmployees() throws Exception {
-        /*List<Employee> employees = Collections.singletonList(getEmployee());
+        List<Employee> employees = Collections.singletonList(getEmployee());
         Pageable pageable = PageRequest.of(1, 5);
         Page<Employee> page = new PageImpl<>(employees, pageable, employees.size());
         given(employeeService.getEmployees(pageable)).willReturn(page);
         mockMvc.perform(get("/employees")
-                .param("page", String.valueOf(pageable.getPageNumber()))
-                .param("size", String.valueOf(pageable.getPageSize())))
+                  .header("authorization", getToken())
+                  .param("page", String.valueOf(pageable.getPageNumber()))
+                  .param("size", String.valueOf(pageable.getPageSize()))
+                )
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.content.[0].id").value(employees.get(0).getId()))
@@ -56,14 +58,17 @@ class EmployeeControllerTest extends BaseTestClass {
                 .andExpect(jsonPath("$.content.[0].country").value(employees.get(0).getCountry()))
                 .andExpect(jsonPath("$.content.[0].city").value(employees.get(0).getCity()))
                 .andExpect(jsonPath("$.content.[0].adress").value(employees.get(0).getAdress()))
-                .andDo(document("getEmployees"));*/
+                .andDo(document("getEmployees"));
     }
 
     @Test
-    public void testGetPerson() throws Exception {
-        /*Employee employee = getEmployee();
+    public void testGetEmployee() throws Exception {
+        Employee employee = getEmployee();
         given(employeeService.getEmployee(employee.getId())).willReturn(employee);
-        mockMvc.perform(get("/employees/{id}", employee.getId()))
+        mockMvc.perform(get("/employees/{id}", employee.getId())
+                .header("authorization", getToken()))
+                .andExpect(status().isOk())
+
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id").value(employee.getId()))
                 .andExpect(jsonPath("$.firstName").value(employee.getFirstName()))
@@ -72,16 +77,17 @@ class EmployeeControllerTest extends BaseTestClass {
                 .andExpect(jsonPath("$.country").value(employee.getCountry()))
                 .andExpect(jsonPath("$.city").value(employee.getCity()))
                 .andExpect(jsonPath("$.adress").value(employee.getAdress()))
-                .andDo(document("getEmployee"));*/
+                .andDo(document("getEmployee"));//pour la documentation de la requete de la reponse du test dans
     }
 
     @Test
-    public void testCreatePerson() throws Exception {
-        /*Employee employee = getEmployee();
+    public void testCreateEmployee() throws Exception {
+        Employee employee = getEmployee();
         given(employeeService.createEmployee(employee)).willReturn(employee);
-        mockMvc.perform(post("/employees")
-                .content(objectMapper.writeValueAsString(employee))
-                .contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(post("/employees").header("authorization", getToken())
+                            .content(objectMapper.writeValueAsString(employee))
+                            .contentType(MediaType.APPLICATION_JSON)
+                        )
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id").value(employee.getId()))
@@ -91,14 +97,15 @@ class EmployeeControllerTest extends BaseTestClass {
                 .andExpect(jsonPath("$.country").value(employee.getCountry()))
                 .andExpect(jsonPath("$.city").value(employee.getCity()))
                 .andExpect(jsonPath("$.adress").value(employee.getAdress()))
-                .andDo(document("createEmployee"));*/
+                .andDo(document("createEmployee"));
     }
 
     @Test
     public void testUpdatePerson() throws Exception {
-        /*Employee employee = getEmployee();
+        Employee employee = getEmployee();
         given(employeeService.updateEmployee(employee.getId(), employee)).willReturn(employee);
         mockMvc.perform(put("/employees/{id}", employee.getId())
+                .header("authorization", getToken())
                 .content(objectMapper.writeValueAsString(employee))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -110,16 +117,17 @@ class EmployeeControllerTest extends BaseTestClass {
                 .andExpect(jsonPath("$.country").value(employee.getCountry()))
                 .andExpect(jsonPath("$.city").value(employee.getCity()))
                 .andExpect(jsonPath("$.adress").value(employee.getAdress()))
-                .andDo(document("updateEmployee"));*/
+                .andDo(document("updateEmployee"));
     }
 
     @Test
     public void testDeleteEmployee() throws Exception {
-        /*Employee employee = getEmployee();
+        Employee employee = getEmployee();
         doNothing().when(employeeService).deleteEmployee(employee.getId());
-        mockMvc.perform(delete("/employees/{id}", employee.getId()))
+        mockMvc.perform(delete("/employees/{id}", employee.getId())
+                .header("authorization", getToken()))
                 .andExpect(status().isOk())
-                .andDo(document("deleteEmployee"));*/
+                .andDo(document("deleteEmployee"));
     }
 
 }

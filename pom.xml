@@ -24,6 +24,26 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<!-- Test container  -->
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers</artifactId>
+			<version>1.16.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>1.16.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>mysql</artifactId>
+			<version>1.16.3</version>
+			<scope>test</scope>
+		</dependency>
+		<!--  Test container  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
@@ -31,6 +51,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions><!--  exclusion de la gestion des logs par defaut de spring boot   -->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -44,7 +70,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
+		<!-- pour la documentation des api  -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
@@ -60,6 +86,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--  Pour les mappers  -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
@@ -71,11 +98,13 @@
 			<artifactId>spring-restdocs-mockmvc</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--  pour les logs   -->
 		<dependency>
 			<groupId>io.zipkin.brave</groupId>
 			<artifactId>brave-context-log4j2</artifactId>
 			<version>5.13.7</version>
 		</dependency>
+		<!--  pour les logs   -->
 		<!-- seeder of database -->
 		<dependency>
 			<groupId>org.liquibase</groupId>
@@ -179,6 +208,42 @@
 						</publishRegistry>
 					</docker>
 				</configuration>
+			</plugin>
+			<!--  Pour la documentation de l'application   -->
+			<plugin>
+				<groupId>org.asciidoctor</groupId>
+				<artifactId>asciidoctor-maven-plugin</artifactId>
+				<version>1.5.8</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.asciidoctor</groupId>
+						<artifactId>asciidoctorj-diagram</artifactId>
+						<version>1.5.8</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<requires>
+						<require>asciidoctor-diagram</require>
+					</requires>
+				</configuration>
+				<executions>
+					<execution>
+						<id>generate-docs</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>process-asciidoc</goal>
+						</goals>
+						<configuration>
+							<sourceDocumentName>index.adoc</sourceDocumentName>
+							<backend>html</backend>
+							<attributes>
+								<snippets>${project.build.directory}/snippets</snippets>
+								<revnumber>${project.version}</revnumber>
+								<revdate>${maven.build.timestamp}</revdate>
+							</attributes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

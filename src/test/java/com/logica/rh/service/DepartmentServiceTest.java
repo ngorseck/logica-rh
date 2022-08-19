@@ -40,9 +40,7 @@ class DepartmentServiceTest {
         /*Department departmentsave = departmentService.createDepartment(department);
         Assertions.assertEquals(departmentsave.getName(), department.getName());*/
 
-        //test updateDepartment
 
-        //test deleteDepartment
 
     }
 

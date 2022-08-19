@@ -48,10 +48,11 @@ class DepartmentControllerTest extends BaseTestClass {
 
     @Test
     public void testdeleteDepartment() throws Exception {
-        /*Department department = getDepartment();
+        Department department = getDepartment();
         doNothing().when(departmentService).deleteDepartment(department.getName());
-        mockMvc.perform(delete("/departments/{name}", department.getName()))
+        mockMvc.perform(delete("/departments/{name}", department.getName())
+                .header("authorization", getToken()))
                 .andExpect(status().isOk())
-                .andDo(document("deleteDepartment"));*/
+                .andDo(document("deleteDepartment"));
     }
 }

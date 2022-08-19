@@ -10,13 +10,13 @@ import java.time.LocalDateTime;
 
 @Controller
 public class ErrorHandler implements ErrorController {
-
-    @RequestMapping("/error")
+    //Cette configuration n'est pas utilisé donc à supprimer
+    /*@RequestMapping("/error")
     @ResponseBody
     public ResponseEntity<APIException> handleError() {
         APIException exception = new APIException(HttpStatus.NOT_FOUND.getReasonPhrase(),
                 HttpStatus.NOT_FOUND, LocalDateTime.now());
         return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
-    }
+    }*/
 
 }
