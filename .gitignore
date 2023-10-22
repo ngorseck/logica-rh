@@ -4,6 +4,13 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+/target/
+/.idea/
+*.iml
+**.iml
+/**/target/
+**/target/**
+
 ### STS ###
 .apt_generated
 .classpath
@@ -34,3 +41,6 @@ build/
 
 ### mac ###
 .DS_Store
+/.DS_Store
+*/.DS_Store
+/*/.DS_Store
