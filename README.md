@@ -1,4 +1,4 @@
-# logica-rh
+# logica-rh developpe par Ngor SECK - ngorsecka@gmail.com
 
 ### Departments end points
     ####get mothod for getting all departments --- > http://localhost:8889/departments
