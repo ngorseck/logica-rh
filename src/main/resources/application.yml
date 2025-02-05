@@ -1,11 +1,11 @@
 server:
-    port: 8889
+    port: 8089
 
 spring:
     datasource:
-        password:
-        url: jdbc:mysql://localhost:3306/logica-rh?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-        username: root
+        url: jdbc:mysql://localhost:3306/logica-rh-db?useSSL=false&&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: user
+        password: user
     application:
         name: spring-logica-rh
     liquibase:
@@ -15,7 +15,7 @@ spring:
             resourceserver:
                 jwt:
                     jwk-set-uri: http://localhost:8080/realms/logica-rh/protocol/openid-connect/certs
-
+                    #URL : http://localhost:8080/realms/logica-rh/.well-known/openid-configuration
     #modification pour le caching
     redis:
         host: localhost
@@ -63,5 +63,5 @@ logging:
             springframework:
                 web: DEBUG
     file:
-        #name: logs/mylog.log
-        name: /Users/macbookair/Documents/IJProjects/2022/Spring/2022/Canada/coach-mamadou-lamine/logica-rh/logs/mylog.log
+        name: logs/mylog.log
+        #name: /Users/macbookair/Documents/IJProjects/2022/Spring/2022/Canada/coach-mamadou-lamine/logica-rh/logs/mylog.log

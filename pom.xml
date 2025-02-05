@@ -14,7 +14,7 @@
 	<name>logica-rh</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		<docker.user/>
 		<docker.token/>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
@@ -70,12 +70,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- pour la documentation des api  -->
+		<!-- pour la documentation des api swagger -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.6.4</version>
 		</dependency>
+		<!-- pour la documentation des api swagger -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

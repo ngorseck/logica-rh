@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   mysql:
     image: mysql:8.0
@@ -10,7 +8,7 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: user
     ports:
-      - 3307:3306
+      - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
@@ -22,7 +20,7 @@ services:
     image: ngorseck/logica-rh:0.0.1-SNAPSHOT
     container_name: logica-rh-backend
     ports:
-      - 8889:8889
+      - "8889:8889"
     restart: unless-stopped
     environment:
       spring.datasource.url: jdbc:mysql://mysql:3306/logica-rh-db?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false
@@ -58,7 +56,7 @@ services:
       KEYCLOAK_ADMIN_USER: admin
       KEYCLOAK_ADMIN_PASSWORD: password
     ports:
-      - 8080:8080
+      - "8080:8080"
     depends_on:
       - postgres
 
